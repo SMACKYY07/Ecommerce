@@ -8,12 +8,14 @@ export const ProductCard = ({ product }) => {
   const handleAddToCart = () => {
     addToCart(product);
   };
+   
 
   return (
+
     <div className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
       <div className="relative h-48 overflow-hidden bg-gray-100">
         <img
-          src={product.image}
+          src={product.imageSrc}
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -45,7 +47,7 @@ export const ProductCard = ({ product }) => {
               />
             ))}
           </div>
-          <span className="text-xs text-gray-600 ml-1">({product.rating})</span>
+          <span className="text-xs text-gray-600 ml-1">({product.ratings})</span>
         </div>
 
         <div className="flex items-center justify-between ">

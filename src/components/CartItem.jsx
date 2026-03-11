@@ -25,7 +25,7 @@ export const CartItem = ({ item }) => {
         {/* Product Image */}
         <div className="w-20 h-20 shrink-0">
           <img
-            src={item.image}
+            src={item.imageSrc}
             alt={item.name}
             className="w-full h-full object-cover rounded-lg"
           />
