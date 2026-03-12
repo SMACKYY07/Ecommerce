@@ -1,4 +1,3 @@
-import { FaShoppingCart } from "react-icons/fa";
 export default function Nav() {
 
   return (
@@ -26,9 +25,7 @@ export default function Nav() {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-             <button className="flex items-center gap-2 text-gray-600 hover:text-blue-600 font-medium">
-               <FaShoppingCart className="text-xl" />
-              </button>
+             
             <button className="text-gray-600 hover:text-blue-600 font-medium pl-10.5">
               Login
             </button>
