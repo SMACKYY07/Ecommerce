@@ -6,7 +6,7 @@ export default function Footer() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                     <div>
-                        <h3 className="text-white font-bold mb-4">About ShopHub</h3>
+                        <h3 className="text-white font-bold mb-4">About Kitch ME</h3>
                         <p className="text-sm">Premium products for the modern lifestyle. Shop with confidence.</p>
                     </div>
                     <div>
@@ -19,12 +19,12 @@ export default function Footer() {
                     </div>
                     <div>
                         <h3 className="text-white font-bold mb-4">Contact</h3>
-                        <p className="text-sm">Email: support@shophub.com</p>
-                        <p className="text-sm">Phone: +1 (555) 123-4567</p>
+                        <p className="text-sm">Email: mohilsharma1414@gmail.com</p>
+                        <p className="text-sm">Phone: +91 7876245247</p>
                     </div>
                 </div>
                 <div className="border-t border-gray-700 pt-8 text-center text-sm">
-                    <p>&copy; 2026 ShopHub. All rights reserved.</p>
+                    <p>&copy; 2026 Kitch ME. All rights reserved.</p>
                 </div>
             </div>
         </footer>

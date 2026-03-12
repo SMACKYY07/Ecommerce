@@ -47,7 +47,7 @@ export const ProductCard = ({ product }) => {
               />
             ))}
           </div>
-          <span className="text-xs text-gray-600 ml-1">({product.ratings})</span>
+          <span className="text-xs text-gray-600 ml-1">( ⭐ {product.ratings})</span>
         </div>
 
         <div className="flex items-center justify-between ">
