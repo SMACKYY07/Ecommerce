@@ -1,0 +1,506 @@
+[
+  {
+    "id": 101,
+    "slug": "aurora-brass-cooktop",
+    "name": "Aurora Brass Cooktop",
+    "category": "Cooktops",
+    "price": 349,
+    "compareAtPrice": 429,
+    "rating": 4.8,
+    "reviewCount": 128,
+    "badge": "Best Seller",
+    "featured": true,
+    "isNew": false,
+    "description": "A dual-burner cooktop designed for open kitchens, with warm brass details and a clean low-profile silhouette.",
+    "highlights": [
+      "Dual high-output brass burners",
+      "Toughened glass top with beveled edge",
+      "Low-profile metal control knobs",
+      "Quick-wipe spill channel"
+    ],
+    "images": [
+      "/images/Gas1.jpg",
+      "/images/Induction2.webp",
+      "/images/Kettle45.webp"
+    ],
+    "variantGroups": [
+      {
+        "name": "finish",
+        "label": "Finish",
+        "options": ["Stone Ivory", "Matte Black", "Brushed Steel"]
+      },
+      {
+        "name": "size",
+        "label": "Size",
+        "options": ["Compact", "Standard"]
+      }
+    ],
+    "specs": {
+      "Burners": "2 brass burners",
+      "Surface": "Tempered glass",
+      "Warranty": "2 years"
+    }
+  },
+  {
+    "id": 102,
+    "slug": "slate-induction-hob",
+    "name": "Slate Induction Hob",
+    "category": "Cooktops",
+    "price": 289,
+    "compareAtPrice": 369,
+    "rating": 4.7,
+    "reviewCount": 96,
+    "badge": "Fast Heat",
+    "featured": true,
+    "isNew": true,
+    "description": "A minimal induction hob with responsive touch controls, quiet performance, and a matte slate finish.",
+    "highlights": [
+      "Instant induction response",
+      "Touch slider with child lock",
+      "Auto-pan detection",
+      "Slim countertop profile"
+    ],
+    "images": [
+      "/images/Induction2.webp",
+      "/images/Gas1.jpg",
+      "/images/Microwave16.webp"
+    ],
+    "variantGroups": [
+      {
+        "name": "finish",
+        "label": "Finish",
+        "options": ["Slate", "Pearl", "Carbon"]
+      },
+      {
+        "name": "zone",
+        "label": "Cooking Zone",
+        "options": ["Single Zone", "Dual Zone"]
+      }
+    ],
+    "specs": {
+      "Power": "1800W",
+      "Controls": "Touch slider",
+      "Warranty": "2 years"
+    }
+  },
+  {
+    "id": 103,
+    "slug": "forge-carbon-skillet",
+    "name": "Forge Carbon Skillet",
+    "category": "Cookware",
+    "price": 84,
+    "compareAtPrice": 108,
+    "rating": 4.9,
+    "reviewCount": 212,
+    "badge": "Chef Pick",
+    "featured": true,
+    "isNew": false,
+    "description": "Balanced carbon-steel cookware that sears like cast iron but feels lighter in hand for everyday service.",
+    "highlights": [
+      "Pre-seasoned carbon steel",
+      "Fast and even heat response",
+      "Stainless helper handle",
+      "Oven safe up to 600F"
+    ],
+    "images": [
+      "/images/Pan4.webp",
+      "/images/Kadai5.webp",
+      "/images/Tawa7.webp"
+    ],
+    "variantGroups": [
+      {
+        "name": "size",
+        "label": "Size",
+        "options": ["10 in", "12 in", "14 in"]
+      },
+      {
+        "name": "finish",
+        "label": "Handle",
+        "options": ["Brushed Steel", "Walnut", "Matte Black"]
+      }
+    ],
+    "specs": {
+      "Material": "Carbon steel",
+      "Weight": "1.6 lb",
+      "Warranty": "Lifetime"
+    }
+  },
+  {
+    "id": 104,
+    "slug": "contour-pressure-cooker",
+    "name": "Contour Pressure Cooker",
+    "category": "Cookware",
+    "price": 119,
+    "compareAtPrice": 149,
+    "rating": 4.6,
+    "reviewCount": 87,
+    "badge": "Everyday Essential",
+    "featured": false,
+    "isNew": false,
+    "description": "A polished steel pressure cooker with secure locking, steady pressure control, and a compact footprint.",
+    "highlights": [
+      "Thick tri-ply base",
+      "Cool-touch handle geometry",
+      "Precision pressure valve",
+      "Dishwasher-safe body"
+    ],
+    "images": [
+      "/images/Cooker3.jpg",
+      "/images/Pan6.webp",
+      "/images/Plate20.webp"
+    ],
+    "variantGroups": [
+      {
+        "name": "capacity",
+        "label": "Capacity",
+        "options": ["3 qt", "5 qt", "7 qt"]
+      },
+      {
+        "name": "finish",
+        "label": "Finish",
+        "options": ["Polished Steel", "Graphite"]
+      }
+    ],
+    "specs": {
+      "Material": "Stainless steel",
+      "Base": "Tri-ply",
+      "Warranty": "5 years"
+    }
+  },
+  {
+    "id": 105,
+    "slug": "atelier-mixer-grinder",
+    "name": "Atelier Mixer Grinder",
+    "category": "Appliances",
+    "price": 249,
+    "compareAtPrice": 329,
+    "rating": 4.8,
+    "reviewCount": 144,
+    "badge": "Editor's Pick",
+    "featured": true,
+    "isNew": false,
+    "description": "A high-torque prep station built for sauces, spice work, and morning blends, wrapped in a calm satin finish.",
+    "highlights": [
+      "900W copper motor",
+      "Three jar sizes included",
+      "Low-vibration base",
+      "Pulse and smart-speed modes"
+    ],
+    "images": [
+      "/images/Mixer Griender13.webp",
+      "/images/Juicer14.webp",
+      "/images/Whish42.webp"
+    ],
+    "variantGroups": [
+      {
+        "name": "finish",
+        "label": "Finish",
+        "options": ["Satin White", "Forest", "Ink"]
+      },
+      {
+        "name": "bundle",
+        "label": "Bundle",
+        "options": ["Core Set", "Prep Set"]
+      }
+    ],
+    "specs": {
+      "Motor": "900W",
+      "Capacity": "3 jars",
+      "Warranty": "3 years"
+    }
+  },
+  {
+    "id": 106,
+    "slug": "studio-two-slice-toaster",
+    "name": "Studio Two-Slice Toaster",
+    "category": "Appliances",
+    "price": 79,
+    "compareAtPrice": 99,
+    "rating": 4.4,
+    "reviewCount": 58,
+    "badge": "Morning Upgrade",
+    "featured": false,
+    "isNew": true,
+    "description": "A compact toaster with clean lines, precise browning, and quiet operation for smaller kitchen counters.",
+    "highlights": [
+      "Six shade settings",
+      "Lift-and-look toast control",
+      "Removable crumb tray",
+      "Compact counter footprint"
+    ],
+    "images": [
+      "/images/Toaster15.webp",
+      "/images/Kettle45.webp",
+      "/images/Cup23.webp"
+    ],
+    "variantGroups": [
+      {
+        "name": "finish",
+        "label": "Finish",
+        "options": ["Cream", "Graphite", "Sand"]
+      },
+      {
+        "name": "voltage",
+        "label": "Voltage",
+        "options": ["110V", "220V"]
+      }
+    ],
+    "specs": {
+      "Slots": "2 wide slots",
+      "Power": "850W",
+      "Warranty": "2 years"
+    }
+  },
+  {
+    "id": 107,
+    "slug": "ember-electric-kettle",
+    "name": "Ember Electric Kettle",
+    "category": "Appliances",
+    "price": 69,
+    "compareAtPrice": 89,
+    "rating": 4.7,
+    "reviewCount": 73,
+    "badge": "New Arrival",
+    "featured": true,
+    "isNew": true,
+    "description": "A fast-boil kettle with a soft-touch handle, hold-warm function, and a silhouette that disappears into the counter.",
+    "highlights": [
+      "Fast-boil concealed element",
+      "Keep-warm for 30 minutes",
+      "Soft-touch grip",
+      "Cordless 360 base"
+    ],
+    "images": [
+      "/images/Kettle45.webp",
+      "/images/Cup23.webp",
+      "/images/Glass22.webp"
+    ],
+    "variantGroups": [
+      {
+        "name": "finish",
+        "label": "Finish",
+        "options": ["Pearl", "Matte Black", "Pine"]
+      },
+      {
+        "name": "capacity",
+        "label": "Capacity",
+        "options": ["1.2 L", "1.7 L"]
+      }
+    ],
+    "specs": {
+      "Capacity": "1.7 liters",
+      "Power": "1500W",
+      "Warranty": "2 years"
+    }
+  },
+  {
+    "id": 108,
+    "slug": "horizon-water-filter",
+    "name": "Horizon Water Filter",
+    "category": "Appliances",
+    "price": 159,
+    "compareAtPrice": 199,
+    "rating": 4.5,
+    "reviewCount": 64,
+    "badge": "Healthy Home",
+    "featured": false,
+    "isNew": false,
+    "description": "Counter-ready filtration with a quiet flow, compact cartridge housing, and materials selected for daily use.",
+    "highlights": [
+      "Multi-stage filtration",
+      "Slim countertop profile",
+      "Quick cartridge swap",
+      "BPA-free storage tank"
+    ],
+    "images": [
+      "/images/Water Filter19.webp",
+      "/images/Storage48.webp",
+      "/images/Glass22.webp"
+    ],
+    "variantGroups": [
+      {
+        "name": "finish",
+        "label": "Finish",
+        "options": ["Cloud", "Mist", "Charcoal"]
+      },
+      {
+        "name": "kit",
+        "label": "Replacement Kit",
+        "options": ["Starter Kit", "12-Month Kit"]
+      }
+    ],
+    "specs": {
+      "Filtration": "4-stage",
+      "Flow rate": "2 L/hr",
+      "Warranty": "18 months"
+    }
+  },
+  {
+    "id": 109,
+    "slug": "stack-airtight-canister-set",
+    "name": "Stack Airtight Canister Set",
+    "category": "Storage",
+    "price": 92,
+    "compareAtPrice": 118,
+    "rating": 4.6,
+    "reviewCount": 111,
+    "badge": "Pantry Favorite",
+    "featured": true,
+    "isNew": false,
+    "description": "A modular storage set with tactile lids, low-visual clutter, and stack-friendly proportions for modern pantries.",
+    "highlights": [
+      "Four nesting sizes",
+      "Silicone airtight seals",
+      "Clear body with smoke lid",
+      "Label-ready front face"
+    ],
+    "images": [
+      "/images/Storage48.webp",
+      "/images/Lunch box30.webp",
+      "/images/Measuring cup38.webp"
+    ],
+    "variantGroups": [
+      {
+        "name": "set",
+        "label": "Set",
+        "options": ["4 Piece", "6 Piece", "8 Piece"]
+      },
+      {
+        "name": "lid",
+        "label": "Lid Color",
+        "options": ["Smoke", "Sand", "Forest"]
+      }
+    ],
+    "specs": {
+      "Pieces": "4 canisters",
+      "Material": "Food-safe polymer",
+      "Warranty": "1 year"
+    }
+  },
+  {
+    "id": 110,
+    "slug": "oak-rolling-board-kit",
+    "name": "Oak Rolling Board Kit",
+    "category": "Tools",
+    "price": 54,
+    "compareAtPrice": 70,
+    "rating": 4.3,
+    "reviewCount": 41,
+    "badge": "Handcrafted",
+    "featured": false,
+    "isNew": false,
+    "description": "An heirloom-inspired board and rolling pin kit shaped from smooth hardwood for clean prep and warm display.",
+    "highlights": [
+      "Solid wood board and pin",
+      "Oil-finished natural grain",
+      "Balanced hand feel",
+      "Hang-ready profile"
+    ],
+    "images": [
+      "/images/Chockla29.webp",
+      "/images/Belna28.webp",
+      "/images/Measuring spoon39.webp"
+    ],
+    "variantGroups": [
+      {
+        "name": "wood",
+        "label": "Wood Finish",
+        "options": ["Natural Oak", "Walnut", "Ash"]
+      },
+      {
+        "name": "size",
+        "label": "Board Size",
+        "options": ["Small", "Standard"]
+      }
+    ],
+    "specs": {
+      "Material": "Seasoned hardwood",
+      "Care": "Hand wash only",
+      "Warranty": "1 year"
+    }
+  },
+  {
+    "id": 111,
+    "slug": "brushed-ladle-serve-set",
+    "name": "Brushed Ladle Serve Set",
+    "category": "Dining",
+    "price": 48,
+    "compareAtPrice": 62,
+    "rating": 4.5,
+    "reviewCount": 52,
+    "badge": "Table Ready",
+    "featured": false,
+    "isNew": false,
+    "description": "A serving set with smooth edges, matte handles, and durable steel construction for daily hosting.",
+    "highlights": [
+      "Serving spoon, ladle, and fork",
+      "Brushed stainless finish",
+      "Dishwasher safe",
+      "Weighted for comfortable serving"
+    ],
+    "images": [
+      "/images/Serving spoon27.webp",
+      "/images/Ladle8.webp",
+      "/images/Fork25.webp"
+    ],
+    "variantGroups": [
+      {
+        "name": "finish",
+        "label": "Finish",
+        "options": ["Silver", "Champagne", "Onyx"]
+      },
+      {
+        "name": "set",
+        "label": "Set Size",
+        "options": ["3 Piece", "5 Piece"]
+      }
+    ],
+    "specs": {
+      "Material": "18/10 stainless steel",
+      "Pieces": "3 serving tools",
+      "Warranty": "2 years"
+    }
+  },
+  {
+    "id": 112,
+    "slug": "linen-hosting-bundle",
+    "name": "Linen Hosting Bundle",
+    "category": "Accessories",
+    "price": 67,
+    "compareAtPrice": 84,
+    "rating": 4.4,
+    "reviewCount": 38,
+    "badge": "Soft Launch",
+    "featured": false,
+    "isNew": true,
+    "description": "A soft-touch bundle for gifting or hosting, pairing absorbent linens with a tailored apron and clean neutral palette.",
+    "highlights": [
+      "Washed cotton apron",
+      "Two absorbent kitchen towels",
+      "Gift-ready folded presentation",
+      "Machine washable finish"
+    ],
+    "images": [
+      "/images/Apron37.webp",
+      "/images/Kitchen towel36.webp",
+      "/images/Trivet46.webp"
+    ],
+    "variantGroups": [
+      {
+        "name": "color",
+        "label": "Color",
+        "options": ["Oat", "Moss", "Ink"]
+      },
+      {
+        "name": "bundle",
+        "label": "Bundle",
+        "options": ["Host Set", "Gift Set"]
+      }
+    ],
+    "specs": {
+      "Fabric": "Washed cotton",
+      "Pieces": "3",
+      "Warranty": "6 months"
+    }
+  }
+]
