@@ -47,110 +47,69 @@ export function HomePage() {
   const [quickViewProduct, setQuickViewProduct] = useState(null);
 
   useEffect(() => {
-    const timeoutId = window.setTimeout(() => setLoading(false), 480);
+    const timeoutId = window.setTimeout(() => setLoading(false), 800);
     return () => window.clearTimeout(timeoutId);
   }, []);
 
   return (
     <>
-      <section className="mx-auto grid max-w-7xl gap-10 px-4 pt-10 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:pt-14">
-        <div className="flex flex-col justify-center">
-          <Badge tone="accent">Modern kitchen objects</Badge>
-          <h1 className="mt-6 max-w-3xl font-heading text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
-            Premium essentials that bring calm to the counter.
+      {/* Hero Section */}
+      <section className="hero">
+        <div className="container hero-content">
+          <div className="section-eyebrow animate-fade-in" style={{margin: '0 auto var(--s-10)'}}>
+            <Sparkles size={12} style={{marginRight: 'var(--s-2)'}} />
+            Modern Kitchen Objects
+          </div>
+          
+          <h1 className="animate-fade-in delay-100">
+            Elevate your <span style={{color: 'var(--primary)'}}>countertop.</span>
           </h1>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">
-            Aurel Kitchen pairs warm materials, quiet proportions, and responsive performance
-            across a refined collection of cooktops, cookware, prep tools, and pantry storage.
+          
+          <p className="animate-fade-in delay-200" style={{maxWidth: '36rem', margin: '0 auto var(--s-12)', fontSize: '1.25rem', color: 'var(--muted)'}}>
+            Kitch Me pairs architectural precision with warm materials to create 
+            essential tools that bring calm to the heart of your home.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button to="/products" size="lg">
-              Shop the collection
-              <ArrowRight className="h-4 w-4" />
+
+          <div className="flex justify-center gap-4 animate-fade-in delay-300">
+            <Button to="/products" size="lg" variant="primary">
+              Shop Collection
+              <ArrowRight size={20} style={{marginLeft: 'var(--s-2)'}} />
             </Button>
-            <Button to="/products?category=Cooktops" variant="secondary" size="lg">
-              Explore cooktops
+            <Button to="/products?category=Appliances" variant="secondary" size="lg">
+              View Appliances
             </Button>
           </div>
-          <div className="mt-10 grid max-w-xl gap-4 sm:grid-cols-3">
+
+          <div className="flex justify-center gap-12 animate-fade-in delay-300" style={{marginTop: 'var(--s-20)'}}>
             {[
-              { label: '4.8 average rating', detail: 'Across the demo catalog' },
-              { label: 'Free shipping $300+', detail: 'Fast tracked delivery' },
-              { label: '30-day returns', detail: 'For a low-friction checkout' },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="rounded-[1.5rem] border border-black/5 bg-white/70 p-4 shadow-[0_18px_50px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-white/5"
-              >
-                <p className="font-semibold">{item.label}</p>
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{item.detail}</p>
+              { label: '4.8 Rating', detail: 'Signature collection' },
+              { label: 'Free Shipping', detail: 'Orders over $300' },
+              { label: '30-Day Returns', detail: 'Premium assurance' }
+            ].map((stat, idx) => (
+              <div key={idx} style={{textAlign: 'left', borderLeft: '1px solid var(--border)', paddingLeft: 'var(--s-6)'}}>
+                <p style={{fontSize: '1.25rem', fontWeight: '800'}}>{stat.label}</p>
+                <p style={{fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--muted)'}}>{stat.detail}</p>
               </div>
             ))}
           </div>
         </div>
-
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="relative overflow-hidden rounded-[2.2rem] border border-black/5 bg-white/75 p-4 shadow-[0_24px_70px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-white/5 sm:row-span-2">
-            <img
-              src={featuredProducts[0].images[0]}
-              alt={featuredProducts[0].name}
-              className="h-full min-h-[28rem] w-full rounded-[1.7rem] object-cover"
-            />
-            <div className="absolute inset-x-8 bottom-8 rounded-[1.5rem] border border-white/30 bg-slate-950/75 p-5 text-white backdrop-blur">
-              <p className="text-xs uppercase tracking-[0.24em] text-white/60">Signature drop</p>
-              <p className="mt-2 font-heading text-2xl font-semibold tracking-tight">
-                {featuredProducts[0].name}
-              </p>
-              <p className="mt-2 text-sm text-white/70">{featuredProducts[0].description}</p>
-            </div>
-          </div>
-          {featuredProducts.slice(1, 3).map((product) => (
-            <div
-              key={product.slug}
-              className="overflow-hidden rounded-[2rem] border border-black/5 bg-white/75 p-4 shadow-[0_20px_60px_rgba(15,23,42,0.07)] dark:border-white/10 dark:bg-white/5"
-            >
-              <img src={product.images[0]} alt={product.name} className="h-48 w-full rounded-[1.5rem] object-cover" />
-              <div className="mt-4 flex items-center justify-between gap-3">
-                <div>
-                  <p className="text-sm uppercase tracking-[0.24em] text-slate-400 dark:text-slate-500">
-                    {product.category}
-                  </p>
-                  <p className="mt-1 font-heading text-xl font-semibold tracking-tight">{product.name}</p>
-                </div>
-                <div className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-700 dark:text-emerald-300">
-                  <Star className="h-3.5 w-3.5 fill-current" />
-                  {product.rating}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
       </section>
 
-      <section className="mx-auto mt-24 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Featured now"
-          title="The essentials customers reach for first"
-          description="Clean silhouettes, useful details, and a product mix built to make a premium storefront feel focused rather than crowded."
-          action={
-            <Button to="/products" variant="secondary">
-              View all products
-            </Button>
-          }
+      {/* Featured Products */}
+      <section className="container" style={{marginTop: 'var(--s-32)'}}>
+        <SectionHeading 
+          eyebrow="Featured Selection"
+          title={<>Essentials for the <br /> modern chef.</>}
+          action={<Button to="/products" variant="secondary">View All</Button>}
         />
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid-responsive" style={{marginTop: 'var(--s-16)'}}>
           {loading
-            ? Array.from({ length: 4 }).map((_, index) => (
-                <div
-                  key={index}
-                  className="overflow-hidden rounded-[2rem] border border-black/5 bg-white/80 p-4 dark:border-white/10 dark:bg-white/5"
-                >
-                  <Skeleton className="h-72 w-full rounded-[1.6rem]" />
-                  <Skeleton className="mt-4 h-6 w-2/3" />
-                  <Skeleton className="mt-3 h-4 w-full" />
-                  <Skeleton className="mt-2 h-4 w-3/4" />
-                  <Skeleton className="mt-6 h-11 w-full rounded-full" />
+            ? Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="flex flex-col gap-4">
+                  <div className="skeleton" style={{aspectRatio: '1/1', borderRadius: 'var(--r-2xl)'}}></div>
+                  <div className="skeleton" style={{height: '1.5rem', width: '60%'}}></div>
+                  <div className="skeleton" style={{height: '1rem', width: '100%'}}></div>
                 </div>
               ))
             : featuredProducts.slice(0, 4).map((product) => (
@@ -159,124 +118,64 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto mt-24 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Shop by category"
-          title="Designed around how modern kitchens actually get used"
-          description="From statement appliances to subtle storage, each category stays visually tight and easy to browse."
-        />
-        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {categories.slice(0, 4).map((category) => (
-            <Link
-              key={category.name}
-              to={`/products?category=${encodeURIComponent(category.name)}`}
-              className="group overflow-hidden rounded-[2rem] border border-black/5 bg-white/80 shadow-[0_20px_60px_rgba(15,23,42,0.06)] transition hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(15,23,42,0.12)] dark:border-white/10 dark:bg-white/5"
+      {/* Category Grid */}
+      <section className="container" style={{marginTop: 'var(--s-40)'}}>
+        <div className="grid-responsive" style={{marginTop: 'var(--s-12)'}}>
+          {categories.slice(0, 4).map((cat) => (
+            <Link 
+              key={cat.name}
+              to={`/products?category=${encodeURIComponent(cat.name)}`}
+              className="category-card"
+              style={{height: '320px'}}
             >
-              <img
-                src={category.image}
-                alt={category.name}
-                className="h-56 w-full object-cover transition duration-500 group-hover:scale-[1.04]"
-              />
-              <div className="p-5">
-                <p className="text-sm uppercase tracking-[0.22em] text-slate-400 dark:text-slate-500">
-                  {category.name}
-                </p>
-                <p className="mt-2 font-heading text-2xl font-semibold tracking-tight">{category.title}</p>
-                <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">
-                  {category.description}
-                </p>
+              <img src={cat.image} alt={cat.name} />
+              <div className="category-overlay">
+                <h4 style={{fontSize: '1.25rem', fontWeight: '800'}}>{cat.name}</h4>
+                <p style={{fontSize: '0.75rem', color: 'rgba(255,255,255,0.7)'}}>{cat.title}</p>
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto mt-24 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="overflow-hidden rounded-[2.4rem] border border-black/5 bg-slate-950 px-6 py-10 text-white shadow-[0_28px_100px_rgba(15,23,42,0.18)] dark:border-white/10 dark:bg-gradient-to-r dark:from-slate-950 dark:to-slate-900 sm:px-10">
-          <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-            <div>
-              <p className="text-xs uppercase tracking-[0.28em] text-white/50">Limited seasonal edit</p>
-              <h2 className="mt-4 font-heading text-4xl font-semibold tracking-tight sm:text-5xl">
-                Save up to 18% on countertop appliances and curated pantry sets.
+
+      {/* Philosophy Section */}
+      <section className="container" style={{marginTop: 'var(--s-40)', paddingBottom: 'var(--s-40)'}}>
+        <div className="glass-panel" style={{padding: 'var(--s-20)', background: 'var(--fg)', color: 'var(--bg)', borderRadius: 'var(--r-3xl)'}}>
+          <div className="grid grid-2 items-center gap-16">
+            <div className="flex flex-col gap-12">
+              <h2 style={{fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', color: 'var(--bg)', lineHeight: 1.1}}>
+                Considered tools <br /> for considered <i style={{color: 'var(--primary)'}}>living.</i>
               </h2>
-              <p className="mt-5 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
-                The demo collection is tuned for premium contrast: neutral surfaces, emerald accents,
-                and a focused range of products that still gives the catalog enough depth to feel real.
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button to="/products?category=Appliances" className="bg-white text-slate-950 hover:bg-emerald-300">
-                  Browse appliances
-                </Button>
-                <Button to="/products?category=Storage" variant="secondary" className="border-white/20 bg-white/5 text-white hover:border-emerald-300 hover:text-emerald-300">
-                  Explore pantry storage
-                </Button>
+              <div className="flex flex-col gap-8">
+                 {highlights.map((item, i) => {
+                   const Icon = item.icon;
+                   return (
+                     <div key={i} className="flex gap-6">
+                        <div className="btn btn-icon" style={{background: 'rgba(255,255,255,0.1)', color: 'white', borderRadius: 'var(--r-xl)'}}>
+                          <Icon size={24} />
+                        </div>
+                        <div>
+                          <h4 style={{fontSize: '1.25rem', fontWeight: '800', color: 'white'}}>{item.title}</h4>
+                          <p style={{marginTop: 'var(--s-2)', color: 'rgba(255,255,255,0.5)', lineHeight: 1.6}}>{item.description}</p>
+                        </div>
+                     </div>
+                   );
+                 })}
               </div>
             </div>
-            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-              {highlights.map((item) => {
-                const Icon = item.icon;
 
-                return (
-                  <div
-                    key={item.title}
-                    className="rounded-[1.75rem] border border-white/10 bg-white/5 p-5 backdrop-blur"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/12 text-emerald-300">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <p className="mt-4 font-semibold">{item.title}</p>
-                    <p className="mt-2 text-sm leading-6 text-white/65">{item.description}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto mt-24 max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Why it lands"
-          title="Brand cues inspired by premium D2C storefronts"
-          description="Minimal surfaces, rounded cards, softened shadows, and clear product hierarchy keep the experience polished across mobile and desktop."
-        />
-        <div className="mt-10 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="grid gap-5">
-            {highlights.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <article
-                  key={item.title}
-                  className="rounded-[2rem] border border-black/5 bg-white/80 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-white/5"
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-300">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-5 font-heading text-2xl font-semibold tracking-tight">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">
-                    {item.description}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
-          <div className="grid gap-5">
-            {testimonials.map((testimonial) => (
-              <article
-                key={testimonial.name}
-                className="rounded-[2rem] border border-black/5 bg-white/80 p-8 shadow-[0_18px_50px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-white/5"
-              >
-                <Sparkles className="h-6 w-6 text-emerald-600 dark:text-emerald-300" />
-                <p className="mt-5 font-heading text-2xl font-semibold leading-10 tracking-tight">
-                  “{testimonial.quote}”
-                </p>
-                <div className="mt-6">
-                  <p className="font-semibold">{testimonial.name}</p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">{testimonial.role}</p>
+            <div className="grid grid-cols-2 gap-4" style={{height: '100%'}}>
+              {featuredProducts.slice(0, 4).map((product, i) => (
+                <div key={i} style={{borderRadius: 'var(--r-xl)', overflow: 'hidden', aspectRatio: '1/1'}}>
+                  <img 
+                    src={product.images[0]} 
+                    alt={`Philosophy ${i}`} 
+                    style={{width: '100%', height: '100%', objectFit: 'cover', filter: i % 2 === 0 ? 'grayscale(1)' : 'none', opacity: 0.9}}
+                  />
                 </div>
-              </article>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

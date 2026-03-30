@@ -10,15 +10,15 @@ export function CartPage() {
   const { items, subtotal, shipping, tax, total, compareAtSubtotal, updateQty, removeItem } = useCart();
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div className="container" style={{paddingTop: 'var(--s-16)', paddingBottom: 'var(--s-24)'}}>
       <SectionHeading
         eyebrow="Cart"
-        title="Review your selections before checkout"
+        title="Review your selections"
         description="Variant-aware line items, editable quantities, and a persistent summary panel."
       />
 
       {items.length === 0 ? (
-        <div className="mt-10">
+        <div style={{marginTop: 'var(--s-10)'}}>
           <EmptyState
             icon={ShoppingBag}
             title="Your cart is empty"
@@ -28,8 +28,8 @@ export function CartPage() {
           />
         </div>
       ) : (
-        <div className="mt-10 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="space-y-5">
+        <div className="cart-layout">
+          <div className="cart-items">
             {items.map((item) => (
               <CartLineItem
                 key={item.lineId}
@@ -38,17 +38,17 @@ export function CartPage() {
                 onRemove={removeItem}
               />
             ))}
-            <div className="rounded-[2rem] border border-black/5 bg-white/80 p-6 text-sm leading-7 text-slate-600 shadow-[0_18px_50px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
-              <p className="font-semibold text-slate-950 dark:text-white">
+            <div className="glass-panel" style={{padding: 'var(--s-8)', fontSize: '0.875rem', lineHeight: 1.6}}>
+              <p style={{fontWeight: 700, color: 'var(--primary)'}}>
                 You are saving {formatCurrency(compareAtSubtotal - subtotal)} compared with the list price.
               </p>
-              <p className="mt-2">
+              <p style={{marginTop: 'var(--s-3)', color: 'var(--muted)'}}>
                 Shipping is free once the subtotal crosses $300. Taxes are calculated at a flat
                 demo rate for this frontend-only build.
               </p>
             </div>
           </div>
-          <div className="lg:sticky lg:top-28 lg:h-fit">
+          <div>
             <OrderSummary
               items={items}
               subtotal={subtotal}
@@ -61,6 +61,6 @@ export function CartPage() {
           </div>
         </div>
       )}
-    </section>
+    </div>
   );
 }

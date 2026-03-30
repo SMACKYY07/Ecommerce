@@ -2,10 +2,10 @@ import products from './products.json';
 
 export const PRICE_FILTERS = [
   { value: 'all', label: 'All prices' },
-  { value: 'under-75', label: 'Under $75' },
-  { value: '75-150', label: '$75 to $150' },
-  { value: '150-250', label: '$150 to $250' },
-  { value: '250-plus', label: '$250 and up' },
+  { value: 'under-75', label: 'Under ₹75' },
+  { value: '75-150', label: '₹75 to ₹150' },
+  { value: '150-250', label: '₹150 to ₹250' },
+  { value: '250-plus', label: '₹250 and up' },
 ];
 
 export const RATING_FILTERS = [

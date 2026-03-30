@@ -1,4 +1,6 @@
-[
+const fs = require('fs');
+
+const data = `[
   {"id":101,"slug":"aurora-brass-cooktop","name":"Aurora Brass Cooktop","category":"Cooktops","price":349,"compareAtPrice":429,"rating":4.8,"reviewCount":128,"badge":"Best Seller","featured":true,"isNew":false,"description":"A dual-burner cooktop designed for open kitchens, with warm brass details and a clean low-profile silhouette.","highlights":["Dual high-output brass burners","Toughened glass top with beveled edge","Low-profile metal control knobs","Quick-wipe spill channel"],"images":["/images/Gas1.jpg","/images/Induction2.webp","/images/Kettle45.webp"],"variantGroups":[{"name":"finish","label":"Finish","options":["Stone Ivory","Matte Black","Brushed Steel"]},{"name":"size","label":"Size","options":["Compact","Standard"]}],"specs":{"Burners":"2 brass burners","Surface":"Tempered glass","Warranty":"2 years"}},
   {"id":102,"slug":"slate-induction-hob","name":"Slate Induction Hob","category":"Cooktops","price":289,"compareAtPrice":369,"rating":4.7,"reviewCount":96,"badge":"Fast Heat","featured":true,"isNew":true,"description":"A minimal induction hob with responsive touch controls, quiet performance, and a matte slate finish.","highlights":["Instant induction response","Touch slider with child lock","Auto-pan detection","Slim countertop profile"],"images":["/images/Induction2.webp","/images/Gas1.jpg","/images/Microwave16.webp"],"variantGroups":[{"name":"finish","label":"Finish","options":["Slate","Pearl","Carbon"]},{"name":"zone","label":"Cooking Zone","options":["Single Zone","Dual Zone"]}],"specs":{"Power":"1800W","Controls":"Touch slider","Warranty":"2 years"}},
   {"id":103,"slug":"forge-carbon-skillet","name":"Forge Carbon Skillet","category":"Cookware","price":84,"compareAtPrice":108,"rating":4.9,"reviewCount":212,"badge":"Chef Pick","featured":true,"isNew":false,"description":"Balanced carbon-steel cookware that sears like cast iron but feels lighter in hand for everyday service.","highlights":["Pre-seasoned carbon steel","Fast and even heat response","Stainless helper handle","Oven safe up to 600F"],"images":["/images/Pan4.webp","/images/Kadai5.webp","/images/Tawa7.webp"],"variantGroups":[{"name":"size","label":"Size","options":["10 in","12 in","14 in"]},{"name":"finish","label":"Handle","options":["Brushed Steel","Walnut","Matte Black"]}],"specs":{"Material":"Carbon steel","Weight":"1.6 lb","Warranty":"Lifetime"}},
@@ -39,4 +41,11 @@
   {"id":138,"slug":"tap-pipe","name":"Tap Pipe","category":"Appliances","price":79,"compareAtPrice":99,"rating":4.5,"reviewCount":56,"badge":"Healthy Home","featured":false,"isNew":false,"description":"Pull out kitchen tap.","highlights":["Spray mode","Swivel spout","Easy install"],"images":["/images/Tap pipe33.webp"],"variantGroups":[{"name":"finish","label":"Finish","options":["Chrome","Brushed"]}],"specs":{"Flow":"2.2gpm","Type":"Pull out"}},
   {"id":139,"slug":"tongs","name":"Kitchen Tongs","category":"Tools","price":23,"compareAtPrice":30,"rating":4.6,"reviewCount":167,"badge":"Everyday Essential","featured":false,"isNew":true,"description":"Locking kitchen tongs.","highlights":["Stainless","Lock feature","Heat resistant"],"images":["/images/Tongs43.webp"],"variantGroups":[{"name":"length","label":"Length","options":["9in","12in"]}],"specs":{"Material":"Stainless","Max temp":"500F"}},
   {"id":140,"slug":"trivet","name":"Silicone Trivet","category":"Accessories","price":16,"compareAtPrice":21,"rating":4.7,"reviewCount":134,"badge":"Best Seller","featured":false,"isNew":false,"description":"Heat resistant trivet.","highlights":["Silicone","Foldable","Non slip"],"images":["/images/Trivet46.webp"],"variantGroups":[{"name":"shape","label":"Shape","options":["Round","Square"]}],"specs":{"Max temp":"450F","Material":"Silicone"}}
-]
+]`;
+
+try {
+  fs.writeFileSync('src/data/products.json', data);
+  console.log("Successfully restored products.json via Node script bypass!");
+} catch (e) {
+  console.error("Failed to write products.json:", e);
+}

@@ -104,22 +104,17 @@ export function CheckoutPage() {
   }
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div className="container" style={{paddingTop: 'var(--s-16)', paddingBottom: 'var(--s-24)'}}>
       <SectionHeading
         eyebrow="Secure checkout"
-        title="Delivery, payment, and order summary in one responsive flow"
+        title="Delivery, payment, and order summary"
         description="Checkout is protected by auth, but remains fully mocked for this frontend-only storefront."
       />
 
-      <div className="mt-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-        <form
-          onSubmit={handleSubmit}
-          className="grid gap-8 rounded-[2rem] border border-black/5 bg-white/80 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-white/5"
-        >
-          <div className="grid gap-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.26em] text-emerald-600 dark:text-emerald-300">
-              Contact
-            </p>
+      <div className="cart-layout" style={{marginTop: 'var(--s-10)'}}>
+        <form onSubmit={handleSubmit} className="checkout-form">
+          <div>
+            <p className="checkout-section-title">Contact</p>
             <Input
               label="Email"
               type="email"
@@ -129,11 +124,9 @@ export function CheckoutPage() {
             />
           </div>
 
-          <div className="grid gap-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.26em] text-emerald-600 dark:text-emerald-300">
-              Shipping address
-            </p>
-            <div className="grid gap-5 sm:grid-cols-2">
+          <div>
+            <p className="checkout-section-title">Shipping address</p>
+            <div className="grid grid-2 gap-5">
               <Input
                 label="First name"
                 value={formValues.firstName}
@@ -147,18 +140,22 @@ export function CheckoutPage() {
                 error={errors.lastName}
               />
             </div>
-            <Input
-              label="Address"
-              value={formValues.address}
-              onChange={(event) => updateField('address', event.target.value)}
-              error={errors.address}
-            />
-            <Input
-              label="Apartment, suite, or company"
-              value={formValues.apartment}
-              onChange={(event) => updateField('apartment', event.target.value)}
-            />
-            <div className="grid gap-5 sm:grid-cols-3">
+            <div style={{marginTop: 'var(--s-5)'}}>
+              <Input
+                label="Address"
+                value={formValues.address}
+                onChange={(event) => updateField('address', event.target.value)}
+                error={errors.address}
+              />
+            </div>
+            <div style={{marginTop: 'var(--s-5)'}}>
+              <Input
+                label="Apartment, suite, or company"
+                value={formValues.apartment}
+                onChange={(event) => updateField('apartment', event.target.value)}
+              />
+            </div>
+            <div className="grid grid-3 gap-5" style={{marginTop: 'var(--s-5)'}}>
               <Input
                 label="City"
                 value={formValues.city}
@@ -178,19 +175,19 @@ export function CheckoutPage() {
                 error={errors.zipCode}
               />
             </div>
-            <Textarea
-              label="Delivery notes"
-              value={formValues.notes}
-              onChange={(event) => updateField('notes', event.target.value)}
-              placeholder="Optional directions or gate code"
-            />
+            <div style={{marginTop: 'var(--s-5)'}}>
+              <Textarea
+                label="Delivery notes"
+                value={formValues.notes}
+                onChange={(event) => updateField('notes', event.target.value)}
+                placeholder="Optional directions or gate code"
+              />
+            </div>
           </div>
 
-          <div className="grid gap-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.26em] text-emerald-600 dark:text-emerald-300">
-              Payment
-            </p>
-            <div className="grid gap-4">
+          <div>
+            <p className="checkout-section-title">Payment</p>
+            <div className="payment-options-grid">
               {paymentOptions.map((option) => {
                 const Icon = option.icon;
                 const isActive = formValues.paymentMethod === option.value;
@@ -200,30 +197,22 @@ export function CheckoutPage() {
                     key={option.value}
                     type="button"
                     onClick={() => updateField('paymentMethod', option.value)}
-                    className={`rounded-[1.5rem] border p-4 text-left transition ${
-                      isActive
-                        ? 'border-emerald-500 bg-emerald-500/10'
-                        : 'border-black/8 bg-white/60 hover:border-emerald-500 dark:border-white/10 dark:bg-white/5'
-                    }`}
+                    className={`payment-option ${isActive ? 'active' : ''}`}
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-black/5 text-slate-700 dark:bg-white/5 dark:text-slate-200">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <p className="font-semibold">{option.label}</p>
-                        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                          {option.description}
-                        </p>
-                      </div>
+                    <div className="payment-option-icon">
+                      <Icon size={20} />
+                    </div>
+                    <div>
+                      <p className="payment-option-label">{option.label}</p>
+                      <p className="payment-option-desc">{option.description}</p>
                     </div>
                   </button>
                 );
               })}
             </div>
 
-            {formValues.paymentMethod === 'card' ? (
-              <div className="grid gap-5 rounded-[1.75rem] border border-black/5 bg-black/[0.03] p-5 dark:border-white/10 dark:bg-white/5">
+            {formValues.paymentMethod === 'card' && (
+              <div className="card-form">
                 <Input
                   label="Name on card"
                   value={formValues.cardName}
@@ -237,7 +226,7 @@ export function CheckoutPage() {
                   error={errors.cardNumber}
                   placeholder="1234 5678 9012 3456"
                 />
-                <div className="grid gap-5 sm:grid-cols-2">
+                <div className="grid grid-2 gap-5">
                   <Input
                     label="Expiry"
                     value={formValues.expiry}
@@ -254,15 +243,15 @@ export function CheckoutPage() {
                   />
                 </div>
               </div>
-            ) : null}
+            )}
           </div>
 
-          <Button type="submit" loading={placingOrder} className="w-full">
+          <Button type="submit" variant="primary" loading={placingOrder} style={{width: '100%', marginTop: 'var(--s-4)'}}>
             {placingOrder ? 'Placing order' : 'Place order'}
           </Button>
         </form>
 
-        <div className="lg:sticky lg:top-28 lg:h-fit">
+        <div style={{position: 'sticky', top: '8rem', height: 'fit-content'}}>
           <OrderSummary
             items={items}
             subtotal={subtotal}
@@ -272,6 +261,6 @@ export function CheckoutPage() {
           />
         </div>
       </div>
-    </section>
+    </div>
   );
 }

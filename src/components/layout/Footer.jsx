@@ -3,19 +3,30 @@ import { Link } from 'react-router-dom';
 
 const footerColumns = [
   {
-    title: 'Shop',
+    title: 'Archive',
     links: [
-      { label: 'All products', to: '/products' },
+      { label: 'All Products', to: '/products' },
       { label: 'Cooktops', to: '/products?category=Cooktops' },
       { label: 'Appliances', to: '/products?category=Appliances' },
+      { label: 'Storage', to: '/products?category=Storage' },
     ],
   },
   {
-    title: 'Support',
+    title: 'Company',
     links: [
+      { label: 'Our Story', to: '/about' },
+      { label: 'Journal', to: '/journal' },
+      { label: 'Stockists', to: '/stockists' },
+      { label: 'Contact', to: '/contact' },
+    ],
+  },
+  {
+    title: 'Assistance',
+    links: [
+      { label: 'Shipping Info', to: '/shipping' },
+      { label: 'Returns', to: '/returns' },
       { label: 'Cart', to: '/cart' },
-      { label: 'Checkout', to: '/checkout' },
-      { label: 'Account', to: '/login' },
+      { label: 'Support', to: '/support' },
     ],
   },
 ];
@@ -28,66 +39,96 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative z-10 border-t border-black/5 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/70">
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.3fr_repeat(2,0.7fr)] lg:px-8">
-        <div className="space-y-5">
-          <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-950 text-sm font-semibold uppercase tracking-[0.28em] text-white dark:bg-white dark:text-slate-950">
-              AK
-            </div>
-            <div>
-              <p className="font-heading text-xl font-semibold tracking-tight">Aurel Kitchen</p>
-              <p className="text-sm text-slate-500 dark:text-slate-400">
-                Quiet tools for considered homes.
-              </p>
-            </div>
-          </div>
-          <p className="max-w-md text-sm leading-6 text-slate-600 dark:text-slate-300">
-            Premium kitchen objects with an architectural point of view: soft finishes, useful
-            details, and a storefront designed to feel as calm as the products themselves.
-          </p>
-          <div className="flex items-center gap-3">
-            {socialLinks.map((socialLink) => {
-              const SocialIcon = socialLink.icon;
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-grid">
+          <div className="footer-logo-section">
+            <Link to="/" style={{display: 'flex', alignItems: 'center', gap: 'var(--s-3)', textDecoration: 'none'}}>
+              <div className="btn-icon" style={{width: '3rem', height: '3rem', background: 'var(--fg)', borderRadius: 'var(--r-2xl)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <img src="/logo.png" alt="KM Logo" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+              </div>
+              <div>
+                <p style={{fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 700, color: 'var(--fg)', textTransform: 'uppercase', margin: 0}}>KITCH ME</p>
+                <p style={{fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.3em', color: 'var(--muted)', margin: 0}}>Kitch Me Studio</p>
+              </div>
+            </Link>
+            
+            <p style={{maxWidth: '320px', fontSize: '0.875rem', lineHeight: 1.6, color: 'var(--muted)'}}>
+              Quiet tools for considered homes. Premium kitchen objects designed with an architectural point of view.
+            </p>
 
-              return (
-                <a
-                  key={socialLink.label}
-                  href={socialLink.href}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white/80 text-slate-700 transition hover:-translate-y-0.5 hover:border-emerald-500 hover:text-emerald-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:border-emerald-400 dark:hover:text-emerald-300"
-                  aria-label={socialLink.label}
-                >
-                  <SocialIcon className="h-4 w-4" />
-                </a>
-              );
-            })}
+            <div className="footer-socials">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    className="social-btn"
+                    aria-label={social.label}
+                  >
+                    <Icon size={16} />
+                  </a>
+                );
+              })}
+            </div>
           </div>
+
+          {footerColumns.map((column) => (
+            <div key={column.title}>
+              <h3 className="footer-title">{column.title}</h3>
+              <ul className="footer-links">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    <Link to={link.to} className="footer-link">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        {footerColumns.map((column) => (
-          <div key={column.title}>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-400 dark:text-slate-500">
-              {column.title}
-            </h2>
-            <ul className="mt-5 space-y-3">
-              {column.links.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    to={link.to}
-                    className="text-sm text-slate-600 transition hover:text-emerald-600 dark:text-slate-300 dark:hover:text-emerald-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+        <div className="footer-journal">
+          <div className="footer-journal-grid">
+            <div>
+              <h2 style={{fontFamily: 'var(--font-heading)', fontSize: '1.875rem', fontWeight: 700, margin: 0}}>
+                Kitch Me.
+              </h2>
+              <p style={{marginTop: 'var(--s-4)', opacity: 0.7}}>
+                Sign up for early access to new collections and studio stories.
+              </p>
+            </div>
+            <form style={{display: 'flex', width: '100%', maxWidth: '400px', gap: 'var(--s-3)'}}>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                style={{flex: 1, borderRadius: 'var(--r-xl)', border: 'none', background: 'rgba(255,255,255,0.1)', padding: 'var(--s-4) var(--s-6)', color: 'inherit'}}
+                required
+              />
+              <button
+                type="submit"
+                className="btn btn-primary"
+                style={{backgroundColor: 'var(--bg)', color: 'var(--fg)'}}
+              >
+                Join
+              </button>
+            </form>
           </div>
-        ))}
+        </div>
       </div>
-      <div className="border-t border-black/5 bg-white/40 px-4 py-5 text-sm text-slate-500 dark:border-white/10 dark:bg-white/0 dark:text-slate-400 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 Aurel Kitchen. Frontend demo only.</p>
-          <p>Free shipping over $300. 30-day returns.</p>
+
+      <div className="footer-bottom">
+        <div className="footer-bottom-content">
+          <p style={{fontSize: '0.6875rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--muted)'}}>
+            © 2026 Kitch Me. All rights reserved.
+          </p>
+          <div className="footer-legal">
+            <Link to="/privacy" className="footer-link">Privacy</Link>
+            <Link to="/terms" className="footer-link">Terms</Link>
+            <Link to="/accessibility" className="footer-link">Accessibility</Link>
+          </div>
         </div>
       </div>
     </footer>

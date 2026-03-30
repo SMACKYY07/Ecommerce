@@ -8,21 +8,21 @@ export function EmptyState({
   actionTo,
 }) {
   return (
-    <div className="rounded-[2rem] border border-dashed border-black/10 bg-white/60 px-6 py-14 text-center shadow-[0_20px_60px_rgba(15,23,42,0.06)] dark:border-white/10 dark:bg-white/5">
-      {Icon ? (
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-300">
-          <Icon className="h-6 w-6" />
+    <div className="empty-state">
+      {Icon && (
+        <div className="empty-state-icon">
+          <Icon size={24} />
         </div>
-      ) : null}
-      <h2 className="mt-5 font-heading text-2xl font-semibold tracking-tight">{title}</h2>
-      <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-slate-600 dark:text-slate-300">
+      )}
+      <h2 className="empty-state-title">{title}</h2>
+      <p className="empty-state-desc">
         {description}
       </p>
-      {actionLabel && actionTo ? (
-        <Button to={actionTo} className="mt-6">
+      {actionLabel && actionTo && (
+        <Button to={actionTo} variant="primary">
           {actionLabel}
         </Button>
-      ) : null}
+      )}
     </div>
   );
 }

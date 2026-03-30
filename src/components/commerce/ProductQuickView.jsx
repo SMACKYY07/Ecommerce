@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getDefaultVariantSelection } from '../../data/catalog';
 import { useCart } from '../../hooks/useCart';
 import { useToast } from '../../hooks/useToast';
@@ -43,6 +43,13 @@ function ProductQuickViewPanel({ product, open, onClose }) {
     onClose();
   }
 
+  const navigate = useNavigate();
+  function handleBuyNow() {
+    addItem(product, variantSelection, quantity);
+    onClose();
+    navigate('/checkout');
+  }
+
   return (
     <Modal
       open={open}
@@ -51,38 +58,39 @@ function ProductQuickViewPanel({ product, open, onClose }) {
       title={product.name}
       description={product.description}
     >
-      <div className="grid gap-8 p-6 lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="overflow-hidden rounded-[1.8rem] bg-black/5 dark:bg-white/5">
-          <img src={product.images[0]} alt={product.name} className="h-full min-h-[22rem] w-full object-cover" />
+      <div className="grid grid-2 gap-8" style={{padding: 'var(--s-6)'}}>
+        <div style={{overflow: 'hidden', borderRadius: 'var(--r-2xl)', background: 'var(--bg-soft)'}}>
+          <img src={product.images[0]} alt={product.name} style={{width: '100%', height: '100%', minHeight: '22rem', objectFit: 'cover'}} />
         </div>
-        <div className="space-y-6">
-          <div className="flex items-center justify-between">
+        <div style={{display: 'flex', flexDirection: 'column', gap: 'var(--s-6)'}}>
+          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
             <Badge tone="accent">{product.badge}</Badge>
             <RatingStars rating={product.rating} reviewCount={product.reviewCount} />
           </div>
-          <div className="flex items-end gap-3">
-            <p className="font-heading text-3xl font-semibold tracking-tight">
-              {formatCurrency(product.price)}
-            </p>
-            <p className="text-sm text-slate-400 line-through">
+          <div style={{display: 'flex', flexDirection: 'column', gap: 'var(--s-1)'}}>
+            <p style={{fontSize: '0.875rem', fontWeight: 500, color: 'var(--muted)', textDecoration: 'line-through'}}>
               {formatCurrency(product.compareAtPrice)}
             </p>
+            <div style={{display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 'var(--s-3)'}}>
+              <p className="details-price">
+                {formatCurrency(product.price)}
+              </p>
+              <Badge tone="accent" style={{backgroundColor: 'hsla(0, 84%, 60%, 0.1)', color: 'hsl(0, 84%, 60%)', border: 'none', padding: '2px 8px', fontSize: '0.75rem'}}>
+                {Math.round(((product.compareAtPrice - product.price) / product.compareAtPrice) * 100)}% OFF
+              </Badge>
+            </div>
           </div>
-          <div className="grid gap-5">
+          <div style={{display: 'grid', gap: 'var(--s-5)'}}>
             {product.variantGroups.map((group) => (
               <div key={group.name}>
-                <p className="text-sm font-medium text-slate-600 dark:text-slate-300">{group.label}</p>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <p style={{fontSize: '0.875rem', fontWeight: 500, color: 'var(--muted)'}}>{group.label}</p>
+                <div style={{marginTop: 'var(--s-3)', display: 'flex', flexWrap: 'wrap', gap: 'var(--s-2)'}}>
                   {group.options.map((option) => (
                     <button
                       key={option}
                       type="button"
                       onClick={() => handleVariantChange(group.name, option)}
-                      className={`rounded-full border px-4 py-2 text-sm transition ${
-                        variantSelection[group.name] === option
-                          ? 'border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300'
-                          : 'border-black/8 bg-white/70 text-slate-600 hover:border-emerald-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-300'
-                      }`}
+                      className={`variant-btn ${variantSelection[group.name] === option ? 'active' : ''}`}
                     >
                       {option}
                     </button>
@@ -92,13 +100,15 @@ function ProductQuickViewPanel({ product, open, onClose }) {
             ))}
           </div>
           <QuantityStepper value={quantity} onChange={setQuantity} />
-          <div className="grid gap-3 sm:grid-cols-2">
-            <Button onClick={handleAddToCart}>Add to cart</Button>
-            <Button to={`/products/${product.slug}`} variant="secondary" onClick={onClose}>
-              View details
+          <div className="grid grid-2 gap-3" style={{marginTop: 'var(--s-2)'}}>
+            <Button variant="primary" onClick={handleAddToCart} style={{width: '100%'}}>
+              Add to cart
+            </Button>
+            <Button variant="secondary" onClick={handleBuyNow} style={{width: '100%'}}>
+              Buy now
             </Button>
           </div>
-          <ul className="grid gap-2 text-sm text-slate-600 dark:text-slate-300">
+          <ul style={{display: 'grid', gap: 'var(--s-2)', fontSize: '0.875rem', color: 'var(--muted)', listStyle: 'none', padding: 0}}>
             {product.highlights.map((highlight) => (
               <li key={highlight}>• {highlight}</li>
             ))}
@@ -106,7 +116,7 @@ function ProductQuickViewPanel({ product, open, onClose }) {
           <Link
             to={`/products/${product.slug}`}
             onClick={onClose}
-            className="inline-flex text-sm font-medium text-emerald-600 dark:text-emerald-300"
+            style={{fontSize: '0.875rem', fontWeight: 600, color: 'var(--primary)', textDecoration: 'none'}}
           >
             Open the full product page
           </Link>

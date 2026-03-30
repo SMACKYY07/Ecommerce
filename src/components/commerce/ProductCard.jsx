@@ -1,5 +1,5 @@
 import { Heart, ShoppingBag } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getDefaultVariantSelection } from '../../data/catalog';
 import { useCart } from '../../hooks/useCart';
 import { useToast } from '../../hooks/useToast';
@@ -13,6 +13,7 @@ export function ProductCard({ product, onQuickView }) {
   const { addItem } = useCart();
   const { toggle, has } = useWishlist();
   const { pushToast } = useToast();
+  const navigate = useNavigate();
   const isWishlisted = has(product.id);
 
   function handleAddToCart() {
@@ -24,71 +25,74 @@ export function ProductCard({ product, onQuickView }) {
     });
   }
 
-  function handleToggleWishlist() {
-    toggle(product.id);
-    pushToast({
-      title: isWishlisted ? `${product.name} removed from wishlist` : `${product.name} saved`,
-      tone: 'neutral',
-    });
+  function handleLogout() {
+    logout();
+    setMobileMenuOpen(false);
   }
 
   return (
-    <article className="group overflow-hidden rounded-[2rem] border border-black/5 bg-white/80 shadow-[0_18px_60px_rgba(15,23,42,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_80px_rgba(15,23,42,0.14)] dark:border-white/10 dark:bg-white/5">
-      <div className="relative overflow-hidden">
+    <article className="glass-panel" style={{overflow: 'hidden', padding: 0, maxWidth: '320px', margin: '0 auto'}}>
+      <div style={{position: 'relative', overflow: 'hidden'}}>
         <Link to={`/products/${product.slug}`}>
           <img
             src={product.images[0]}
             alt={product.name}
-            className="h-72 w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+            style={{width: '100%', height: '12rem', objectFit: 'cover'}}
           />
         </Link>
-        <div className="absolute inset-x-0 top-0 flex items-start justify-between p-4">
-          <Badge tone={product.featured ? 'inverted' : 'accent'}>{product.badge}</Badge>
+        <div style={{position: 'absolute', top: 'var(--s-4)', left: 'var(--s-4)', right: 'var(--s-4)', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+          <Badge tone={product.featured ? 'accent' : 'neutral'}>{product.badge}</Badge>
           <button
             type="button"
-            onClick={handleToggleWishlist}
-            className={`inline-flex h-11 w-11 items-center justify-center rounded-full backdrop-blur transition ${
-              isWishlisted
-                ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/20'
-                : 'bg-white/85 text-slate-700 hover:text-rose-500 dark:bg-slate-950/70 dark:text-white'
-            }`}
-            aria-label="Toggle wishlist"
+            onClick={() => toggle(product.id)}
+            className="btn btn-icon"
+            style={{
+              background: isWishlisted ? 'var(--primary)' : 'rgba(255,255,255,0.8)',
+              color: isWishlisted ? 'white' : 'var(--fg)',
+              backdropFilter: 'blur(8px)',
+              borderRadius: '9999px'
+            }}
           >
-            <Heart className={`h-4 w-4 ${isWishlisted ? 'fill-current' : ''}`} />
+            <Heart size={18} fill={isWishlisted ? 'white' : 'none'} />
           </button>
         </div>
       </div>
-      <div className="space-y-4 p-5">
-        <div className="flex items-center justify-between gap-3">
+      
+      <div style={{padding: 'var(--s-6)', display: 'flex', flexDirection: 'column', gap: 'var(--s-4)'}}>
+        <div className="flex justify-between items-center">
           <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-slate-400 dark:text-slate-500">
+            <span style={{fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--muted)'}}>
               {product.category}
-            </p>
-            <Link to={`/products/${product.slug}`} className="mt-2 block font-heading text-2xl font-semibold tracking-tight">
+            </span>
+            <Link to={`/products/${product.slug}`} style={{display: 'block', marginTop: 'var(--s-2)', fontWeight: '700', fontSize: '1.25rem'}}>
               {product.name}
             </Link>
           </div>
           <RatingStars rating={product.rating} reviewCount={product.reviewCount} compact />
         </div>
-        <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">{product.description}</p>
-        <div className="flex items-end justify-between gap-4">
+
+        <div className="flex items-end justify-between">
           <div>
-            <p className="font-heading text-2xl font-semibold tracking-tight">{formatCurrency(product.price)}</p>
-            <p className="text-sm text-slate-400 line-through">{formatCurrency(product.compareAtPrice)}</p>
+            {product.compareAtPrice > product.price && (
+              <span style={{fontSize: '0.875rem', color: 'var(--muted)', textDecoration: 'line-through'}}>
+                {formatCurrency(product.compareAtPrice)}
+              </span>
+            )}
+            <p style={{fontSize: '1.5rem', fontWeight: '700', color: 'var(--primary)'}}>
+              {formatCurrency(product.price)}
+            </p>
           </div>
-          <div className="hidden translate-y-2 items-center gap-2 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:flex">
-            <Button variant="secondary" size="sm" onClick={() => onQuickView(product)}>
-              Quick view
-            </Button>
-          </div>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
-          <Button variant="secondary" onClick={() => onQuickView(product)} className="sm:hidden">
-            Quick view
+          <Button variant="ghost" size="sm" onClick={() => onQuickView(product)}>
+            View
           </Button>
-          <Button onClick={handleAddToCart} className="sm:min-w-[11rem]">
-            <ShoppingBag className="h-4 w-4" />
-            Add to cart
+        </div>
+
+        <div className="grid grid-cols-2 gap-3">
+          <Button variant="cart" onClick={handleAddToCart} size="md">
+            Add
+          </Button>
+          <Button variant="buy" onClick={() => navigate('/checkout')} size="md">
+            Buy
           </Button>
         </div>
       </div>
